@@ -1,3 +1,6 @@
+## Demo screenshot
+![alt text](https://github.com/ywatanabe1989/vChatGPT/blob/main/docs/vChatGPT_demo.png?raw=true)
+
 ## Installation
 ``` bash
 $ git@github.com:ywatanabe1989/vChatGPT.git
@@ -11,3 +14,4 @@ $ export OPENAI_API_KEY="16-DIGIT-YOUR_API_KEY" # Available on https://platform.
 $ cd ./src/vChatGPT
 $ python scripts/main.py
 ```
+
