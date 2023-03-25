@@ -1,7 +1,8 @@
 ## Installation
 ``` bash
+$ git@github.com:ywatanabe1989/vChatGPT.git
 $ pip install git+https://github.com/openai/whisper.git
-$ pip install vChatGPT
+($ pip install vChatGPT # fixme)
 ```
 
 ## Execute verbal ChatGPT
