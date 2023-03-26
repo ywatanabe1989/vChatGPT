@@ -16,7 +16,7 @@ $ pip install -r requirements.txt
 # $ pip install git+https://github.com/openai/whisper.git
 ```
 
-#### Execute verbal ChatGPT
+#### How to execute verbal ChatGPT
 ``` bash
 $ export OPENAI_API_KEY="52-DIGIT-YOUR_API_KEY" # Available on https://platform.openai.com/account/api-keys
 $ cd ./src/vChatGPT
