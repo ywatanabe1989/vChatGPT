@@ -1,7 +1,7 @@
 #### vChatGPT
 You can talk to and listen to ChatGPT.
 
-#### Demo screenshot
+#### Screenshot
 ![alt text](https://github.com/ywatanabe1989/vChatGPT/blob/main/docs/vChatGPT_demo_new.png?raw=true)
 
 #### Installation
