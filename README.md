@@ -1,7 +1,9 @@
 #### vChatGPT
-vChatGPT allows users to communicate verbally with ChatGPT using a microphone and speakers.
+vChatGPT allows users to communicate verbally with ChatGPT.
 
 #### Demo screenshot
+Input: Your voice through a microphone  
+Output: Speech sound from speakers + text  
 ![alt text](https://github.com/ywatanabe1989/vChatGPT/blob/main/docs/vChatGPT_demo.png?raw=true)
 
 #### Installation
