@@ -8,7 +8,7 @@ $ source .vChatGPT/bin/activate
 $ git clone git@github.com:ywatanabe1989/vChatGPT.git
 $ cd vChatGPT
 $ pip install -r requirements.txt
-$ pip install git+https://github.com/openai/whisper.git
+# $ pip install git+https://github.com/openai/whisper.git
 ```
 
 ## Execute verbal ChatGPT
@@ -18,3 +18,5 @@ $ cd ./src/vChatGPT
 $ python ./scripts/main.py
 ```
 
+## TODO
+- [ ] pip install vChatGPT
