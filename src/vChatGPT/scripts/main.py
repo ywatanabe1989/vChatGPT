@@ -1,20 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 13:24:29 (ywatanabe)"
+# Time-stamp: "2023-03-26 14:39:40 (ywatanabe)"
 
-import sys
+import os
 import time
 
-sys.path.append(".")
-# from scripts import audio, ml, utils
 from vChatGPT.scripts import audio, ml, utils
 
 
 def s2s(chatgpt):
     ID = utils.gen_ID()
+    os.makedirs("/tmp/vChatGPT", exist_ok=True)
 
     # Records a microphone input
-    spath_in_wav = f"/tmp/input-{ID}.wav"
+    spath_in_wav = f"/tmp/vChatGPT/input-{ID}.wav"
     audio.rec_as_wav_unlim(
         spath=spath_in_wav,
         print_press_q_message=True if chatgpt.counter == 0 else False,
@@ -35,21 +34,18 @@ def s2s(chatgpt):
     print()
 
     # Text to speech
-    spath_out_mp3 = f"/tmp/output-{ID}.mp3"
+    spath_out_mp3 = f"/tmp/vChatGPT/output-{ID}.mp3"
     ml.t2s(gpt_out, spath=spath_out_mp3, print_save=False)
 
     # Plays the ChatGPT's output
-    audio.play_audio(spath_out_mp3)
+    audio.play_audio_file(spath_out_mp3)
+
 
 def main():
     chatgpt = ml.ChatGPT()
-    counter = 0
     while True:
         s2s(chatgpt)
-        counter += 1
-# def main():
-#     import pkg_resources
-#     import ipdb; ipdb.set_trace()        
+
+
 if __name__ == "__main__":
     main()
-    

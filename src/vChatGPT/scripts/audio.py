@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 14:26:05 (ywatanabe)"
+# Time-stamp: "2023-03-26 14:28:55 (ywatanabe)"
+
+import threading
 
 import audio2numpy as a2n
 import numpy as np
+import pkg_resources
+import readchar
 import soundcard as sc
 from scipy.io import wavfile
-import threading
-import readchar
-import pkg_resources
+
 
 class ThreadWithReturnValue(threading.Thread):
     """
@@ -53,6 +55,7 @@ def save_arr_as_wav(arr, spath, fs=44100, dtype=np.int16, does_print=False):
         print(f"Saved to: {spath}")
 
 
+# Playing audio
 def play_arr(arr, fs=44100):
     """
     Example:
@@ -66,13 +69,13 @@ def play_arr(arr, fs=44100):
     default_speaker.play(arr / np.max(arr), samplerate=fs)
 
 
-def play_audio(lpath, fs=None):
+def play_audio_file(lpath, fs=None):
     """
     Example:
         fs = 44100
         spath="/tmp/test_rec_wav_unlim.wav"
         rec_wav_unlim(spath=spath, fs=fs)
-        play_audio(spath)
+        play_audio_file(spath)
     """
     arr, _fs = a2n.audio_from_file(lpath)
     fs = fs if fs is not None else _fs
@@ -80,10 +83,11 @@ def play_audio(lpath, fs=None):
 
 
 def play_buzzer():
-    play_audio(pkg_resources.resource_filename("vChatGPT", "data/buzzer.wav"))
-    # play_audio("./data/buzzer.wav")    
+    play_audio_file(pkg_resources.resource_filename("vChatGPT", "data/buzzer.wav"))
+    # play_audio_file("./data/buzzer.wav")
 
 
+# Recording
 def rec_as_arr(rec_sec=5, fs=44100):
     """
     Example:
@@ -128,7 +132,9 @@ def rec_as_arr_unlim(fs=44100, print_press_q_message=True):
         return np.vstack(arr_unlim).astype(np.float64)
 
     if print_press_q_message:
-        print("\nSPACE            : Stop recording.\nSPACE -> Ctrl + C: Stop the session.\n")
+        print(
+            "\nSPACE            : Stop recording.\nSPACE -> Ctrl + C: Stop the session.\n"
+        )
 
     event = threading.Event()
     t1 = ThreadWithReturnValue(target=_wait_space)
@@ -140,17 +146,17 @@ def rec_as_arr_unlim(fs=44100, print_press_q_message=True):
     return t2.join()
 
 
-def rec_as_wav(spath="/tmp/test_rec_as_wav_unlim.wav", rec_sec=5, fs=44100):
-    """
-    Example:
-        rec_sec = 5
-        fs = 44100
-        spath="/tmp/test_rec_as_wav.wav"
-        arr = rec_as_wav(spath=spath, rec_sec=rec_sec, fs=fs)
-    """
-    play_buzzer()
-    arr = rec_as_arr(rec_sec=rec_sec, fs=fs)
-    save_arr_as_wav(arr, spath, fs=fs)
+# def rec_as_wav(spath="/tmp/test_rec_as_wav_unlim.wav", rec_sec=5, fs=44100):
+#     """
+#     Example:
+#         rec_sec = 5
+#         fs = 44100
+#         spath="/tmp/test_rec_as_wav.wav"
+#         arr = rec_as_wav(spath=spath, rec_sec=rec_sec, fs=fs)
+#     """
+#     play_buzzer()
+#     arr = rec_as_arr(rec_sec=rec_sec, fs=fs)
+#     save_arr_as_wav(arr, spath, fs=fs)
 
 
 def rec_as_wav_unlim(
@@ -164,9 +170,3 @@ def rec_as_wav_unlim(
     """
     arr = rec_as_arr_unlim(fs=fs, print_press_q_message=print_press_q_message)
     save_arr_as_wav(arr, spath=spath, fs=fs)
-
-
-if __name__ == "__main__":
-    fs = 44100
-    arr_unlim = rec_as_arr_unlim(fs=fs)
-    play_arr(arr_unlim, fs=fs)

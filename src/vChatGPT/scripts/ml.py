@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 13:28:27 (ywatanabe)"
+# Time-stamp: "2023-03-26 14:36:41 (ywatanabe)"
 import os
 import warnings
 
@@ -24,13 +24,11 @@ def s2t_unpaid(lpath_wav, language="EN"):
         audio.play_audio(tmp_wav)
     """
 
-    # print("\nText-to-speech ...\n")
     r = sr.Recognizer()
     with sr.AudioFile(lpath_wav) as source:
         audio = r.record(source)
     try:
         said_text = r.recognize_google(audio, language=language)
-        # print(f"\nYou said:\n{said_text}\n")
         return said_text
     except Exception as e:
         print(e)
@@ -43,7 +41,12 @@ class ChatGPT(object):
         "I would be grateful if your response would be less than 20 words.",
     ):
         self.counter = 0
-        openai.api_key = os.getenv("OPENAI_API_KEY")
+        self.OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+        openai.api_key = self.OPENAI_API_KEY
+
+        if self.OPENAI_API_KEY is None:
+            print('\n"OPENAI_API_KEY" is not set as an environmental varible.\n')
+
         self.chat_history = []
         self.chat_history.append(
             {
@@ -54,6 +57,10 @@ class ChatGPT(object):
 
     def __call__(self, text):
         self.counter += 1
+
+        if self.OPENAI_API_KEY is None:
+            return "OPENAI_API_KEY is not set as an environmental variable"
+
         if text is None:
             text = ""
         try:
