@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 02:06:06 (ywatanabe)"
+# Time-stamp: "2023-03-26 13:25:16 (ywatanabe)"
 
 import audio2numpy as a2n
 import numpy as np
@@ -8,7 +8,7 @@ import soundcard as sc
 from scipy.io import wavfile
 import threading
 import readchar
-
+import pkg_resources
 
 class ThreadWithReturnValue(threading.Thread):
     """
@@ -80,7 +80,8 @@ def play_audio(lpath, fs=None):
 
 
 def play_buzzer():
-    play_audio("./data/buzzer.wav")
+    play_audio(pkg_resources.resource_filename("vChatGPT", "data/buzzer.wav"))
+    # play_audio("./data/buzzer.wav")    
 
 
 def rec_as_arr(rec_sec=5, fs=44100):

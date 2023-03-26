@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 11:55:20 (ywatanabe)"
+# Time-stamp: "2023-03-26 13:28:27 (ywatanabe)"
 import os
 import warnings
 
@@ -93,6 +93,7 @@ def t2s(text, spath="/tmp/t2s.mp3", print_save=False):
         print(f"Saved to: {spath}")
 
 
+# $ pip install git+https://github.com/openai/whisper.git
 # class Whisper(object):
 #     """
 #     Speach to text using Whisper by OpenAI.

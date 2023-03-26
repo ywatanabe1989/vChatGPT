@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 11:54:40 (ywatanabe)"
+# Time-stamp: "2023-03-26 13:24:29 (ywatanabe)"
 
 import sys
 import time
 
 sys.path.append(".")
 # from scripts import audio, ml, utils
-from scripts import audio, ml, utils
+from vChatGPT.scripts import audio, ml, utils
 
 
 def s2s(chatgpt):
@@ -47,6 +47,9 @@ def main():
     while True:
         s2s(chatgpt)
         counter += 1
-    
+# def main():
+#     import pkg_resources
+#     import ipdb; ipdb.set_trace()        
 if __name__ == "__main__":
     main()
+    

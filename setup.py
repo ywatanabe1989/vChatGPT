@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 01:43:48 (ywatanabe)"
+# Time-stamp: "2023-03-26 13:16:50 (ywatanabe)"
 
 import re
 from codecs import open
@@ -72,6 +72,7 @@ setup(
     install_requires=_requirements(),
     # tests_require=_test_requirements(),
     # setup_requires=["pytest-runner"],
+    package_data={'vChatGPT': ['data/*.wav']},
     author=author,
     author_email=author_email,
     url=url,
