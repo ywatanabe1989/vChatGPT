@@ -2,9 +2,7 @@
 You can talk to and listen to ChatGPT.
 
 #### Demo screenshot
- Input: Your voice through a microphone  
-Output: Speech reaction of ChatGPT from speakers as well as text  
-![alt text](https://github.com/ywatanabe1989/vChatGPT/blob/main/docs/vChatGPT_demo.png?raw=true)
+![alt text](https://github.com/ywatanabe1989/vChatGPT/blob/main/docs/vChatGPT_demo_new.png?raw=true)
 
 #### Installation
 ``` bash
