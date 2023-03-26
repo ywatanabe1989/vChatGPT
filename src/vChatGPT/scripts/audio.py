@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 13:25:16 (ywatanabe)"
+# Time-stamp: "2023-03-26 14:26:05 (ywatanabe)"
 
 import audio2numpy as a2n
 import numpy as np
@@ -128,7 +128,7 @@ def rec_as_arr_unlim(fs=44100, print_press_q_message=True):
         return np.vstack(arr_unlim).astype(np.float64)
 
     if print_press_q_message:
-        print("\nSPACE: Stop recording.\nSPACE -> Ctrl + C: Stop the session.\n")
+        print("\nSPACE            : Stop recording.\nSPACE -> Ctrl + C: Stop the session.\n")
 
     event = threading.Event()
     t1 = ThreadWithReturnValue(target=_wait_space)
