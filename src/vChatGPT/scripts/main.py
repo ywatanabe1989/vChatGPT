@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 11:42:00 (ywatanabe)"
+# Time-stamp: "2023-03-26 11:54:40 (ywatanabe)"
 
 import sys
 import time
 
 sys.path.append(".")
 # from scripts import audio, ml, utils
-from .scripts import audio, ml, utils
+from scripts import audio, ml, utils
 
 
 def s2s(chatgpt):

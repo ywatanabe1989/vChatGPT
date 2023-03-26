@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 02:27:39 (ywatanabe)"
+# Time-stamp: "2023-03-26 11:55:20 (ywatanabe)"
 import os
 import warnings
 
 import openai
 import speech_recognition as sr
-import whisper
+
+# import whisper
 from gtts import gTTS
 
 
@@ -74,35 +75,6 @@ class ChatGPT(object):
             return out_text
 
 
-# def t2t_chatGPT(text):
-#     """
-#     Text to text using ChatGPT by OpenAI.
-
-#     Example:
-#         from scripts import ml
-#         out = ml.t2t_chatGPT("Please help me learn English.")
-#         print(out)
-#     """
-#     openai.api_key = "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"
-#     time_lim_sec = 10
-
-#     try:
-#         add_text = " Please answer in 20 words or less as if you are my friend."
-#         response = openai.ChatCompletion.create(
-#             model="gpt-3.5-turbo",
-#             messages=[
-#                 {"role": "system", "content": text + add_text},
-#             ],
-#             request_timeout=time_lim_sec,
-#             max_tokens=30,
-#         )
-#         responded_text = response["choices"][0]["message"]["content"]
-#         return responded_text
-#     except Exception as e:
-#         print(e)
-#         return "I could not catch you well."
-
-
 def t2s(text, spath="/tmp/t2s.mp3", print_save=False):
     """
     Text to Speech using a Google's product.
@@ -121,26 +93,26 @@ def t2s(text, spath="/tmp/t2s.mp3", print_save=False):
         print(f"Saved to: {spath}")
 
 
-class Whisper(object):
-    """
-    Speach to text using Whisper by OpenAI.
+# class Whisper(object):
+#     """
+#     Speach to text using Whisper by OpenAI.
 
-    from scripts import audio, ml
+#     from scripts import audio, ml
 
-    spath = "/tmp/test.wav"
-    audio.rec_wav_unlim(spath=spath, fs=44100)
+#     spath = "/tmp/test.wav"
+#     audio.rec_wav_unlim(spath=spath, fs=44100)
 
-    mywhisper = Whisper()
-    mywhisper(spath)
-    """
+#     mywhisper = Whisper()
+#     mywhisper(spath)
+#     """
 
-    def __init__(
-        self,
-    ):
-        self.model = whisper.load_model("base")
+#     def __init__(
+#         self,
+#     ):
+#         self.model = whisper.load_model("base")
 
-    def __call__(self, lpath):
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore", UserWarning)
-            result = self.model.transcribe(lpath)
-        return result["text"]
+#     def __call__(self, lpath):
+#         with warnings.catch_warnings():
+#             warnings.simplefilter("ignore", UserWarning)
+#             result = self.model.transcribe(lpath)
+#         return result["text"]
