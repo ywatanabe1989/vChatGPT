@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Time-stamp: "2023-03-26 14:39:40 (ywatanabe)"
+# Time-stamp: "2023-05-06 16:53:04 (ywatanabe)"
 
 import os
 import time
@@ -26,7 +26,8 @@ def s2s(chatgpt):
     # said = mywhisper(spath_in_wav)
     said = ml.s2t_unpaid(spath_in_wav, language="EN")
     print(said)
-
+    print()
+    
     # Text to text (using ChatGPT)
     # gpt_out = ml.t2t_chatGPT(said)
     gpt_out = chatgpt(said)
@@ -36,6 +37,7 @@ def s2s(chatgpt):
     # Text to speech
     spath_out_mp3 = f"/tmp/vChatGPT/output-{ID}.mp3"
     ml.t2s(gpt_out, spath=spath_out_mp3, print_save=False)
+    
 
     # Plays the ChatGPT's output
     audio.play_audio_file(spath_out_mp3)
