@@ -1,3 +1,5 @@
+#### This project is implemented as part of a web application: https://v-chat.app/
+
 #### vChatGPT
 You can talk to and listen to ChatGPT.
 
